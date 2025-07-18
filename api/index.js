@@ -145,9 +145,9 @@ app.get('/api', (req, res) => {
     res.send('Welcome to the MusixLyrics API!');
 });
 
-app.get('/api/lyrics/:trackId', async (req, res) => {
+app.get('/api/lyrics', async (req, res) => {
     try {
-      const song = await musix.searchTrack(req.params.trackId);
+      const song = await musix.searchTrack(req.query.song);
         const lyrics = await musix.getLyrics(song);
         let cooked = {
           code: 200,
